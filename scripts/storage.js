@@ -1,12 +1,12 @@
-var options = {};
-var tmp = {};
-var optionsForm = {};
+export const options = {};
+export const tmp = {};
+export const optionsForm = {};
 
 /**
  * 非同期ストレージ管理オブジェクト
  * chrome.storage.local を利用してデータを保存・取得する
  */
-var a_storage = {
+export var a_storage = {
   /**
    * オブジェクトが空かどうかを確認
    */
@@ -129,7 +129,7 @@ var a_storage = {
 /**
  * ローカルストレージ管理オブジェクト
  */
-var storage = {
+export var storage = {
   /**
    * データを保存
    */

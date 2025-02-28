@@ -1,4 +1,4 @@
-importScripts("./scripts/storage.js");
+import { storage, options } from "./scripts/storage.js";
 
 var table = "options";
 var tmptable = "tmp";
@@ -41,7 +41,7 @@ const resetLocalStorage = async function () {
     for (let option_key of Object.values(requiredOptions)) {
       if (options[option_key] === undefined) {
         await resetOptions();
-        await chrome.runtime.openOptionsPage();
+        // await chrome.runtime.openOptionsPage();
         isOptionPageOpened = true;
         break;
       }
@@ -106,10 +106,10 @@ chrome.action.onClicked.addListener((tab) => {
       target: { tabId: tab.id },
       files: ["scripts/jquery.mousewheel.js"],
     });
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ["scripts/storage.js"],
-    });
+    // chrome.scripting.executeScript({
+    //   target: { tabId: tab.id },
+    //   files: ["scripts/storage.js"],
+    // });
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
       files: ["scripts/css-transform.js"],
@@ -151,10 +151,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         target: { tabId: tab.id },
         files: ["scripts/jquery.mousewheel.js"],
       });
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["scripts/storage.js"],
-      });
+      // chrome.scripting.executeScript({
+      //   target: { tabId: tab.id },
+      //   files: ["scripts/storage.js"],
+      // });
       chrome.scripting.executeScript({
         target: { tabId: tab.id },
         files: ["scripts/css-transform.js"],
@@ -182,10 +182,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         target: { tabId: tab.id },
         files: ["scripts/jquery.mousewheel.js"],
       });
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["scripts/storage.js"],
-      });
+      // chrome.scripting.executeScript({
+      //   target: { tabId: tab.id },
+      //   files: ["scripts/storage.js"],
+      // });
       chrome.scripting.executeScript({
         target: { tabId: tab.id },
         files: ["scripts/css-transform.js"],
