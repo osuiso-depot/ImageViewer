@@ -96,7 +96,7 @@ $.fn.imageViewer = function(options) {
             '<li><span class="label"><span data-i18n="height">Height</span>: </span><input class="'+appName+'-info-height" readonly/>'+
           '</ul>'+
         '</nav>'+
-        // '<button class="'+appName+'-button-close">Close</button>'+
+        '<button class="'+appName+'-button-close">Close</button>'+
       '</div>'
     );
 

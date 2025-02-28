@@ -46,18 +46,6 @@ const resetLocalStorage = async function () {
         break;
       }
     }
-    // I'm not sure, but I guess this sentences are fix to Chrome24 to Chrome25 have bugs about css.
-    if (
-      !isOptionPageOpened &&
-      (navigator.userAgent.toLowerCase().indexOf("chrome/24.0") >= 0 ||
-        navigator.userAgent.toLowerCase().indexOf("chrome/25.0") >= 0)
-    ) {
-      if (!options.insert_css_bug_in_24_to_25_msg_shown) {
-        // await chrome.runtime.openOptionsPage();
-      }
-      storage.insert(table, "insert_css_bug_in_24_to_25_msg_shown", true);
-      await storage.store(table);
-    }
   }
   let tbl = storage.getTable(tmptable);
   console.log("table is ...");

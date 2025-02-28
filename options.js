@@ -75,15 +75,4 @@ $(function () {
       if (this.value != "") this.value = message;
     }
   });
-
-  // // Bug msg
-  // var insert_css_bug_in_24_to_25_msg = $("#insert_css_bug_in_24_to_25_msg");
-  // if (
-  //   !(
-  //     navigator.userAgent.toLowerCase().indexOf("chrome/24.0") >= 0 ||
-  //     navigator.userAgent.toLowerCase().indexOf("chrome/25.0") >= 0
-  //   )
-  // ) {
-  //   insert_css_bug_in_24_to_25_msg.hide();
-  // }
 });
