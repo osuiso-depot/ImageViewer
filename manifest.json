@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_appName__",
+  "version": "0.1.6.3",
+  "default_locale": "ja",
+  "description": "__MSG_appDesc__",
+  "minimum_chrome_version": "93",
+
+  "background": {
+    "service_worker": "background-wrapper.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["css/viewer.css"],
+      "js": [
+        "scripts/jquery.js",
+        "scripts/jquery.mousewheel.js",
+        "scripts/storage.js",
+        "scripts/prototypes.js",
+        "scripts/css-transform.js",
+        "image-viewer.js",
+        "activate.js"
+      ]
+    }
+  ],
+
+  "icons": {
+    "16": "icon16.png",
+    "128": "icon128.png"
+  },
+
+  "host_permissions": [
+    "*://*/*"
+  ],
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus",
+    "scripting"
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+
+  "action": {
+    "default_title": "Click to show image"
+  }
+}
