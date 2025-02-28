@@ -1,69 +1,69 @@
 $(function () {
-	console.log("options open!");
+  console.log("options open!");
   var table = "options";
 
-	const getOptions = async function(){
-		chrome.runtime.sendMessage({method: "Get options"}, (response) => {
-			return response.status;
-		});
-	}
+  const getOptions = async function(){
+    chrome.runtime.sendMessage({method: "Get options"}, (response) => {
+      return response.status;
+    });
+  }
 
-	chrome.runtime.sendMessage({method: "Get options"}, (response) => {
-		optionCB(response.status);
-	});
+  chrome.runtime.sendMessage({method: "Get options"}, (response) => {
+    optionCB(response.status);
+  });
 
-	const optionCB = async function (options){
-		$("input[name=zoom]").val(options.zoom);
-		$("input[name=zoom] + .display").html(options.zoom);
+  const optionCB = async function (options){
+    $("input[name=zoom]").val(options.zoom);
+    $("input[name=zoom] + .display").html(options.zoom);
 
-		$("input[name=rotate]").val(options.rotate);
-		$("input[name=rotate] + .display").html(options.rotate);
+    $("input[name=rotate]").val(options.rotate);
+    $("input[name=rotate] + .display").html(options.rotate);
 
-		$("input[name=minWidth]").val(options.minWidth);
-		$("input[name=minHeight]").val(options.minHeight);
+    $("input[name=minWidth]").val(options.minWidth);
+    $("input[name=minHeight]").val(options.minHeight);
 
-		if (options.fitWhenLarger) {
-			document.querySelector("input[name=fitWhenLarger]").checked = true;
-		}
+    if (options.fitWhenLarger) {
+      document.querySelector("input[name=fitWhenLarger]").checked = true;
+    }
 
-		$("#fit-" + options.fit).attr("checked", true);
+    $("#fit-" + options.fit).attr("checked", true);
 
-		$("input[name=fit]").on("change", function () {
-			console.log("change fit...");
-			const name = "fit";
-			const val  = $(this).val();
-			console.log(name, val);
-			chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
-		});
+    $("input[name=fit]").on("change", function () {
+      console.log("change fit...");
+      const name = "fit";
+      const val  = $(this).val();
+      console.log(name, val);
+      chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
+    });
 
-		$("input[type=number]").on("change", function () {
-			console.log("change number...");
-			const name = $(this).attr("name");
-			const val  = parseInt($(this).val());
-			console.log(name, val);
-			chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
-		});
+    $("input[type=number]").on("change", function () {
+      console.log("change number...");
+      const name = $(this).attr("name");
+      const val  = parseInt($(this).val());
+      console.log(name, val);
+      chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
+    });
 
-		$("input[type=checkbox]").on("change", function () {
-			console.log("change checkbox...");
-			const name = $(this).attr("name");
-			const val = this.checked;
-			console.log(name, val);
-			chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
-		});
+    $("input[type=checkbox]").on("change", function () {
+      console.log("change checkbox...");
+      const name = $(this).attr("name");
+      const val = this.checked;
+      console.log(name, val);
+      chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
+    });
 
-		$("input[type=range]").on("change", function () {
-			console.log("change range...");
-			const name = $(this).attr("name");
-			const val = this.value;
+    $("input[type=range]").on("change", function () {
+      console.log("change range...");
+      const name = $(this).attr("name");
+      const val = this.value;
 
-			display = $("+ .display", this);
-			display.html(val);
+      display = $("+ .display", this);
+      display.html(val);
 
-			console.log(name, val);
-			chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
-		});		
-	}
+      console.log(name, val);
+      chrome.runtime.sendMessage({method: "AssignData", key: name, value: val, update: true, tableId: table});
+    });
+  }
 
   // i18n
   function i18n(name) {
